@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rehab - A Victorian Love Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --parchment: #f4f1e8;
+            --dark-parchment: #e8e2d5;
+            --ink: #3a2f26;
+            --burgundy: #722f37;
+            --gold: #d4af37;
+            --rose: #c9a8a0;
+            --shadow: rgba(58, 47, 38, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2a241d 0%, #1a1510 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+        }
+
+        /* Victorian Background Pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.03) 0px, rgba(212, 175, 55, 0.03) 2px, transparent 2px, transparent 4px),
+                repeating-linear-gradient(-45deg, rgba(114, 47, 55, 0.03) 0px, rgba(114, 47, 55, 0.03) 2px, transparent 2px, transparent 4px);
+            pointer-events: none;
+        }
+
+        /* Book Container */
+        .book-container {
+            width: 90vw;
+            max-width: 1200px;
+            height: 85vh;
+            max-height: 800px;
+            position: relative;
+            perspective: 2000px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        /* Book Cover */
+        .book-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #3a2f26 0%, #1a1510 100%);
+            border-radius: 10px;
+            z-index: -1;
+            overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
+        }
+
+        .cover-design {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid var(--gold);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .cover-title {
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            letter-spacing: 8px;
+        }
+
+        .cover-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--rose);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cover-ornament {
+            font-size: 3rem;
+            color: var(--gold);
+            margin: 20px 0;
+        }
+
+        .cover-image {
+            width: 250px;
+            height: 250px;
+            border: 8px solid var(--gold);
+            border-radius: 50%;
+            background: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            margin: 20px 0;
+        }
+
+        .cover-date {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Book Binding */
+        .book-binding {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 80px;
+            height: 100%;
+            background: linear-gradient(90deg, #2a241d 0%, #3a2f26 50%, #2a241d 100%);
+            transform: translateX(-50%);
+            box-shadow: 
+                inset 0 0 20px rgba(0,0,0,0.5),
+                0 0 30px rgba(0,0,0,0.5);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .binding-title {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
+
+        .binding-decoration {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            color: var(--gold);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        /* Book Pages */
+        .book-pages {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+
+        .page {
+            position: absolute;
+            width: calc(50% - 40px);
+            height: calc(100% - 40px);
+            background: var(--parchment);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            transform-origin: left center;
+            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+            border-radius: 0 5px 5px 0;
+            overflow: hidden;
+            padding: 40px 30px 40px 50px;
+        }
+
+        .page.left {
+            left: 0;
+            border-radius: 5px 0 0 5px;
+            transform-origin: right center;
+        }
+
+        .page.right {
+            right: 0;
+        }
+
+        .page.flipped {
+            transform: rotateY(-180deg);
+        }
+
+        .page.left.flipped {
+            transform: rotateY(180deg);
+        }
+
+        /* Page Content */
+        .page-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Victorian Decorations */
+        .victorian-border {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 1px solid var(--gold);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .victorian-corner {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--gold);
+            z-index: 1;
+        }
+
+        .victorian-corner.top-left {
+            top: 10px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .victorian-corner.top-right {
+            top: 10px;
+            right: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .victorian-corner.bottom-left {
+            bottom: 10px;
+            left: 10px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .victorian-corner.bottom-right {
+            bottom: 10px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: var(--rose);
+        }
+
+        .page-number.left {
+            left: 30px;
+            right: auto;
+        }
+
+        /* Table of Contents */
+        .toc-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            color: var(--burgundy);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .toc-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .toc-list {
+            list-style: none;
+            counter-reset: toc-counter;
+            flex: 1;
+        }
+
+        .toc-item {
+            counter-increment: toc-counter;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .toc-item::before {
+            content: counter(toc-counter);
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--burgundy);
+            margin-right: 20px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .toc-item:hover {
+            background: rgba(114, 47, 55, 0.1);
+            transform: translateX(10px);
+        }
+
+        .toc-item a {
+            text-decoration: none;
+            color: var(--ink);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .toc-item .toc-page {
+            font-family: 'Cinzel', serif;
+            color: var(--rose);
+            font-style: italic;
+        }
+
+        /* Chapter Styles */
+        .chapter-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .chapter-number {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--burgundy);
+            margin-bottom: 10px;
+        }
+
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--ink);
+            position: relative;
+            display: inline-block;
+        }
+
+        .chapter-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .chapter-content {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: justify;
+            flex: 1;
+            position: relative;
+            font-weight: 400;
+        }
+
+        .chapter-content p {
+            margin-bottom: 20px;
+            text-indent: 30px;
+        }
+
+        .chapter-illustration {
+            width: 220px;
+            height: 220px;
+            background: url('https://images.unsplash.com/photo-1511306396867-5943b19a0fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;
+            border: 8px solid var(--dark-parchment);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .chapter-illustration::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(114, 47, 55, 0.2) 0%, transparent 50%);
+        }
+
+        /* Victorian Decorations */
+        .victorian-decoration {
+            display: block;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        .flourish {
+            font-size: 2rem;
+            color: var(--gold);
+            margin: 15px 0;
+            display: block;
+            text-align: center;
+        }
+
+        /* Letter Styles */
+        .letter-content {
+            background: var(--dark-parchment);
+            border-radius: 5px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid var(--rose);
+            position: relative;
+            font-style: italic;
+            flex: 1;
+            line-height: 1.8;
+        }
+
+        .letter-content::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: rgba(114, 47, 55, 0.2);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .letter-content::after {
+            content: '"';
+            position: absolute;
+            bottom: 0;
+            right: 20px;
+            font-size: 4rem;
+            color: rgba(114, 47, 55, 0.2);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .letter-signature {
+            text-align: right;
+            margin-top: 20px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            color: var(--burgundy);
+        }
+
+        /* Navigation Buttons */
+        .nav-buttons {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .nav-btn {
+            background: var(--burgundy);
+            color: var(--parchment);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            font-size: 1.2rem;
+        }
+
+        .nav-btn:hover {
+            background: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .nav-btn:disabled {
+            background: var(--rose);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Victorian Frame */
+        .victorian-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 20px solid transparent;
+            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="%23d4af37" stroke-width="2"/><path d="M10,10 Q20,0 30,10 T50,10 Q60,0 70,10 T90,10" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M10,90 Q20,100 30,90 T50,90 Q60,100 70,90 T90,90" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M10,10 Q0,20 10,30 T10,50 Q0,60 10,70 T10,90" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M90,10 Q100,20 90,30 T90,50 Q100,60 90,70 T90,90" fill="none" stroke="%23d4af37" stroke-width="1"/></svg>') 30 stretch;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .book-container {
+                width: 95vw;
+                height: 90vh;
+            }
+            
+            .cover-title {
+                font-size: 3.5rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 2rem;
+            }
+            
+            .cover-image {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .book-container {
+                width: 100vw;
+                height: 100vh;
+                max-height: none;
+            }
+            
+            .book-binding {
+                width: 60px;
+            }
+            
+            .binding-title {
+                font-size: 1.2rem;
+            }
+            
+            .page {
+                width: calc(50% - 30px);
+                padding: 30px 20px 30px 40px;
+            }
+            
+            .cover-title {
+                font-size: 2.5rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .cover-image {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .chapter-illustration {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .book-binding {
+                width: 40px;
+            }
+            
+            .binding-title {
+                writing-mode: vertical-rl;
+                font-size: 0.9rem;
+            }
+            
+            .page {
+                padding: 20px 15px 20px 30px;
+            }
+            
+            .cover-title {
+                font-size: 2rem;
+            }
+            
+            .cover-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .cover-image {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .chapter-illustration {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="book-container">
+        <!-- Book Cover -->
+        <div class="book-cover">
+            <div class="cover-design">
+                <h1 class="cover-title">REHAB</h1>
+                <div class="cover-ornament">✧</div>
+                <h2 class="cover-subtitle">A Victorian Love Story</h2>
+                <div class="cover-image"></div>
+                <div class="cover-date">First Meeting: May 4, 2025</div>
+            </div>
+        </div>
+
+        <!-- Book Binding -->
+        <div class="book-binding">
+            <div class="binding-decoration">
+                <i class="fas fa-heart"></i>
+            </div>
+            <div class="binding-title">REHAB</div>
+            <div class="binding-decoration">
+                <i class="fas fa-crown"></i>
+            </div>
+        </div>
+
+        <!-- Book Pages -->
+        <div class="book-pages">
+            <!-- Page 1: Cover -->
+            <div class="page left" id="page1">
+                <div class="victorian-border"></div>
+                <div class="victorian-corner top-left"></div>
+                <div class="victorian-corner top-right"></div>
+                <div class="victorian-corner bottom-left"></div>
+                <div class="victorian-corner bottom-right"></div>
+                
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1 class="cover-title">REHAB</h1>
+                        <span class="flourish">❦</span>
+                        <h2 class="cover-subtitle">A Victorian Love Story</h2>
+                    </div>
+                    
+                    <div class="cover-illustration">
+                        <div class="victorian-illustration"></div>
+                    </div>
+                    
+                    <div class="cover-date">
+                        First Meeting: May 4, 2025
+                    </div>
+                    
+                    <div class="page-number left">1</div>
+                </div>
+            </div>
+
+            <!-- Page 2: Table of Contents -->
+            <div class="page right" id="page2">
+                <div class="victorian-border"></div>
+                <div class="victorian-corner top-left"></div>
+                <div class="victorian-corner top-right"></div>
+                <div class="victorian-corner bottom-left"></div>
+                <div class="victorian-corner bottom-right"></div>
+                
+                <div class="page-content">
+                    <div class="page-header">
+                        <h2 class="toc-title">Table of Contents</h2>
+                    </div>
+                    
+                    <ul class="toc-list">
+                        <li class="toc-item">
+                            <a href="#chapter1">Chapter I: The First Encounter</a>
+                            <span class="toc-page">3</span>
+                        </li>
+                        <li class="toc-item">
+                            <a href="#chapter2">Chapter II: Growing Affection</a>
+                            <span class="toc-page">4</span>
+                        </li>
+                        <li class="toc-item">
+                            <a href="#chapter3">Chapter III: A Promise</a>
+                            <span class="toc-page">5</span>
+                        </li>
+                    </ul>
+                    
+                    <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                    
+                    <div class="page-number">2</div>
+                </div>
+            </div>
+
+            <!-- Page 3: Chapter 1 -->
+            <div class="page left" id="page3">
+                <div class="victorian-border"></div>
+                <div class="victorian-corner top-left"></div>
+                <div class="victorian-corner top-right"></div>
+                <div class="victorian-corner bottom-left"></div>
+                <div class="victorian-corner bottom-right"></div>
+                
+                <div class="page-content">
+                    <div class="chapter-header">
+                        <div class="chapter-number">Chapter I</div>
+                        <h2 class="chapter-title">The First Encounter</h2>
+                    </div>
+                    
+                    <div class="chapter-content">
+                        <p>In the spring of 2025, amidst the blooming gardens of May, fate brought two souls together in a moment that would forever change the course of their lives. The air was filled with the sweet fragrance of roses, and the sun cast a golden glow upon the world, as if nature itself was celebrating this destined meeting.</p>
+                        
+                        <p>She appeared like a vision from a dream, her grace and elegance captivating all who beheld her. Her eyes, deep and mysterious, held the wisdom of ages and the innocence of a child. Her smile, warm and genuine, could melt the coldest of hearts and brighten the darkest of days.</p>
+                        
+                        <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1511306396867-5943b19a0fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                        
+                        <p>In that moment, time stood still, and the world faded away, leaving only two hearts beating as one. It was the beginning of a love story that would transcend time itself.</p>
+                    </div>
+                    
+                    <div class="page-number left">3</div>
+                </div>
+            </div>
+
+            <!-- Page 4: Chapter 2 -->
+            <div class="page right" id="page4">
+                <div class="victorian-border"></div>
+                <div class="victorian-corner top-left"></div>
+                <div class="victorian-corner top-right"></div>
+                <div class="victorian-corner bottom-left"></div>
+                <div class="victorian-corner bottom-right"></div>
+                
+                <div class="page-content">
+                    <div class="chapter-header">
+                        <div class="chapter-number">Chapter II</div>
+                        <h2 class="chapter-title">Growing Affection</h2>
+                    </div>
+                    
+                    <div class="chapter-content">
+                        <p>As days turned into weeks and weeks into months, their bond grew stronger with each passing moment. They discovered in each other a kindred spirit, someone who understood their deepest thoughts and cherished their highest aspirations.</p>
+                        
+                        <p>Her kindness knew no bounds, her compassion touched the lives of all around her, and her gentle spirit brought peace to troubled hearts. She was a beacon of light in a world often shrouded in darkness, a reminder of the beauty that exists in humanity.</p>
+                        
+                        <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                        
+                        <p>Together they walked through gardens of blooming flowers, sat by the gentle streams, and shared dreams under the starlit sky. Each moment spent together was a treasure, a memory to be cherished for eternity.</p>
+                    </div>
+                    
+                    <div class="page-number">4</div>
+                </div>
+            </div>
+
+            <!-- Page 5: Chapter 3 & Letter -->
+            <div class="page left" id="page5">
+                <div class="victorian-border"></div>
+                <div class="victorian-corner top-left"></div>
+                <div class="victorian-corner top-right"></div>
+                <div class="victorian-corner bottom-left"></div>
+                <div class="victorian-corner bottom-right"></div>
+                
+                <div class="page-content">
+                    <div class="chapter-header">
+                        <div class="chapter-number">Chapter III</div>
+                        <h2 class="chapter-title">A Promise</h2>
+                    </div>
+                    
+                    <div class="chapter-content">
+                        <p>And so, with hearts full of love and minds filled with dreams of the future, a promise was made—a promise to wait, to grow, and to build a life together founded on love, respect, and unwavering devotion.</p>
+                        
+                        <div class="letter-content">
+                            My dearest Rehab,<br><br>
+                            These few pages tell only the beginning of what I hope will be a long story. I will not say much now, for it is better that the days themselves write what is yet to come. I will ask for your hand after 40 months — because I want us to grow together and become stronger than when we began.<br><br>
+                            Until then, keep these pages as a keepsake of something beautiful that has just begun.
+                            <div class="letter-signature">With all my love, Islam</div>
+                        </div>
+                        
+                        <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
+                    </div>
+                    
+                    <div class="page-number left">5</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button class="nav-btn" id="prevBtn" disabled>
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="nav-btn" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const pages = document.querySelectorAll('.page');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentPage = 0;
+            const totalPages = pages.length;
+
+            function updatePage() {
+                // Update navigation buttons
+                prevBtn.disabled = currentPage === 0;
+                nextBtn.disabled = currentPage === totalPages - 1;
+
+                // Flip pages based on current page
+                pages.forEach((page, index) => {
+                    if (index < currentPage) {
+                        page.classList.add('flipped');
+                    } else {
+                        page.classList.remove('flipped');
+                    }
+                });
+            }
+
+            // Next page
+            nextBtn.addEventListener('click', () => {
+                if (currentPage < totalPages - 1) {
+                    currentPage++;
+                    updatePage();
+                }
+            });
+
+            // Previous page
+            prevBtn.addEventListener('click', () => {
+                if (currentPage > 0) {
+                    currentPage--;
+                    updatePage();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
+                    currentPage++;
+                    updatePage();
+                } else if (e.key === 'ArrowLeft' && currentPage > 0) {
+                    currentPage--;
+                    updatePage();
+                }
+            });
+
+            // Touch/Swipe navigation
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            document.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            document.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50 && currentPage < totalPages - 1) {
+                    currentPage++;
+                    updatePage();
+                }
+                if (touchEndX > touchStartX + 50 && currentPage > 0) {
+                    currentPage--;
+                    updatePage();
+                }
+            }
+
+            // Initialize
+            updatePage();
+        });
+    </script>
+</body>
+</html>
