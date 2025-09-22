@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rehab - A Victorian Love Story</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>For My Beautiful Rehab - Birthday Gift</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Montserrat:wght@300;400;600&family=Pacifico&family=Great+Vibes&family=Allura&family=Alex+Brush&family=Tangerine&family=Amiri&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --parchment: #f4f1e8;
-            --dark-parchment: #e8e2d5;
-            --ink: #3a2f26;
-            --burgundy: #722f37;
-            --gold: #d4af37;
-            --rose: #c9a8a0;
-            --shadow: rgba(58, 47, 38, 0.3);
+            --primary: #ff6b9d;
+            --secondary: #c44569;
+            --accent: #f8b500;
+            --light: #fff5f7;
+            --dark: #2d3436;
+            --glass: rgba(255, 255, 255, 0.3);
+            --text: #2d3436;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --rose: #e91e63;
+            --rose-light: #f8bbd0;
+            --rose-dark: #880e4f;
         }
 
         * {
@@ -24,875 +28,1814 @@
         }
 
         body {
-            background: linear-gradient(135deg, #2a241d 0%, #1a1510 100%);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            color: var(--text);
+            overflow-x: hidden;
             min-height: 100vh;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: rgba(255, 107, 157, 0.2);
+            animation: float 15s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
+            50% { transform: translateY(-100px) rotate(10deg); opacity: 0.4; }
+        }
+
+        /* Glassmorphism Container */
+        .glass-container {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px var(--shadow);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .subtitle {
+            font-family: 'Alex Brush', cursive;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Countdown Section */
+        .countdown-container {
+            position: relative;
+            min-height: 120px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Cormorant Garamond', serif;
-            overflow: hidden;
-            position: relative;
-            padding: 20px;
         }
 
-        /* Victorian Background Pattern */
-        body::before {
-            content: '';
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            transition: all 0.5s ease;
+        }
+
+        .countdown-item {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 100px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .countdown-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* Rose Petals Message */
+        .rose-petals-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.03) 0px, rgba(212, 175, 55, 0.03) 2px, transparent 2px, transparent 4px),
-                repeating-linear-gradient(-45deg, rgba(114, 47, 55, 0.03) 0px, rgba(114, 47, 55, 0.03) 2px, transparent 2px, transparent 4px);
-            pointer-events: none;
-        }
-
-        /* Book Container */
-        .book-container {
-            width: 90vw;
-            max-width: 1200px;
-            height: 85vh;
-            max-height: 800px;
-            position: relative;
-            perspective: 2000px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-        }
-
-        /* Book Cover */
-        .book-cover {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #3a2f26 0%, #1a1510 100%);
-            border-radius: 10px;
-            z-index: -1;
-            overflow: hidden;
-            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.9);
-        }
-
-        .cover-design {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            border: 3px solid var(--gold);
-            border-radius: 5px;
-            display: flex;
-            flex-direction: column;
+            display: none;
             justify-content: center;
             align-items: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.2);
+            overflow: hidden;
         }
 
-        .cover-title {
-            font-family: 'Cinzel', serif;
-            font-size: 4.5rem;
-            color: var(--gold);
-            text-align: center;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            letter-spacing: 8px;
+        .rose-petals-container.show {
+            display: flex;
         }
 
-        .cover-subtitle {
-            font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: var(--rose);
-            text-align: center;
-            margin-bottom: 40px;
+        .rose-petal {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: var(--rose);
+            border-radius: 0 100% 0 100%;
+            transform: rotate(45deg);
+            opacity: 0.9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
-        .cover-ornament {
+        .petal-text {
+            position: relative;
+            z-index: 10;
+            font-family: 'Sacramento', cursive;
             font-size: 3rem;
-            color: var(--gold);
-            margin: 20px 0;
-        }
-
-        .cover-image {
-            width: 250px;
-            height: 250px;
-            border: 8px solid var(--gold);
-            border-radius: 50%;
-            background: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-            margin: 20px 0;
-        }
-
-        .cover-date {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            color: var(--gold);
+            color: var(--rose-dark);
             text-align: center;
-            margin-top: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            animation: text-appear 2s ease-in-out 1s forwards;
         }
 
-        /* Book Binding */
-        .book-binding {
+        @keyframes text-appear {
+            to { opacity: 1; }
+        }
+
+        /* Timeline Section */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 50%;
-            width: 80px;
-            height: 100%;
-            background: linear-gradient(90deg, #2a241d 0%, #3a2f26 50%, #2a241d 100%);
             transform: translateX(-50%);
-            box-shadow: 
-                inset 0 0 20px rgba(0,0,0,0.5),
-                0 0 30px rgba(0,0,0,0.5);
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .binding-title {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--gold);
-            letter-spacing: 5px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-        }
-
-        .binding-decoration {
-            width: 60px;
-            height: 60px;
-            border: 2px solid var(--gold);
-            border-radius: 50%;
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.8rem;
-            color: var(--gold);
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
-
-        /* Book Pages */
-        .book-pages {
-            position: relative;
-            width: 100%;
+            width: 4px;
             height: 100%;
-            display: flex;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
         }
 
-        .page {
-            position: absolute;
-            width: calc(50% - 40px);
-            height: calc(100% - 40px);
-            background: var(--parchment);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
-            transform-origin: left center;
-            transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-            border-radius: 0 5px 5px 0;
-            overflow: hidden;
-            padding: 40px 30px 40px 50px;
-        }
-
-        .page.left {
-            left: 0;
-            border-radius: 5px 0 0 5px;
-            transform-origin: right center;
-        }
-
-        .page.right {
-            right: 0;
-        }
-
-        .page.flipped {
-            transform: rotateY(-180deg);
-        }
-
-        .page.left.flipped {
-            transform: rotateY(180deg);
-        }
-
-        /* Page Content */
-        .page-content {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
+        .timeline-item {
             position: relative;
-            z-index: 2;
-        }
-
-        /* Victorian Decorations */
-        .victorian-border {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
-            border: 1px solid var(--gold);
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .victorian-corner {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--gold);
-            z-index: 1;
-        }
-
-        .victorian-corner.top-left {
-            top: 10px;
-            left: 10px;
-            border-right: none;
-            border-bottom: none;
-        }
-
-        .victorian-corner.top-right {
-            top: 10px;
-            right: 10px;
-            border-left: none;
-            border-bottom: none;
-        }
-
-        .victorian-corner.bottom-left {
-            bottom: 10px;
-            left: 10px;
-            border-right: none;
-            border-top: none;
-        }
-
-        .victorian-corner.bottom-right {
-            bottom: 10px;
-            right: 10px;
-            border-left: none;
-            border-top: none;
-        }
-
-        /* Page Header */
-        .page-header {
-            text-align: center;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .page-number {
-            position: absolute;
-            bottom: 20px;
-            right: 30px;
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            color: var(--rose);
-        }
-
-        .page-number.left {
-            left: 30px;
-            right: auto;
-        }
-
-        /* Table of Contents */
-        .toc-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            color: var(--burgundy);
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .toc-title::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 25%;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-
-        .toc-list {
-            list-style: none;
-            counter-reset: toc-counter;
-            flex: 1;
-        }
-
-        .toc-item {
-            counter-increment: toc-counter;
-            margin-bottom: 25px;
-            padding: 15px;
-            border-radius: 3px;
+            margin: 2rem 0;
+            width: 45%;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            transform: translateX(30px);
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            transform: translateX(-30px);
+        }
+
+        .timeline-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .timeline-icon {
+            position: absolute;
+            top: 50%;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            background: rgba(212, 175, 55, 0.05);
-        }
-
-        .toc-item::before {
-            content: counter(toc-counter);
-            font-family: 'Cinzel', serif;
+            justify-content: center;
+            color: white;
             font-size: 1.5rem;
-            color: var(--burgundy);
-            margin-right: 20px;
-            font-weight: 600;
-            min-width: 30px;
-            text-align: center;
+            box-shadow: 0 0 0 4px white, 0 0 0 6px var(--primary);
         }
 
-        .toc-item:hover {
-            background: rgba(114, 47, 55, 0.1);
-            transform: translateX(10px);
+        .timeline-item:nth-child(odd) .timeline-icon {
+            right: -70px;
         }
 
-        .toc-item a {
-            text-decoration: none;
-            color: var(--ink);
-            font-family: 'Playfair Display', serif;
+        .timeline-item:nth-child(even) .timeline-icon {
+            left: -70px;
+        }
+
+        .timeline-date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
             font-size: 1.3rem;
-            font-weight: 500;
-            flex: 1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
         }
 
-        .toc-item .toc-page {
-            font-family: 'Cinzel', serif;
-            color: var(--rose);
-            font-style: italic;
+        .timeline-content {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.4rem;
+            line-height: 1.7;
         }
 
-        /* Chapter Styles */
-        .chapter-header {
+        /* Dreams Section */
+        .dreams {
             text-align: center;
-            margin-bottom: 30px;
-            position: relative;
+            padding: 3rem 1rem;
         }
 
-        .chapter-number {
-            font-family: 'Cinzel', serif;
-            font-size: 2rem;
-            color: var(--burgundy);
-            margin-bottom: 10px;
-        }
-
-        .chapter-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: var(--ink);
+        .dreams-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
             position: relative;
             display: inline-block;
         }
 
-        .chapter-title::after {
+        .dreams-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 25%;
-            width: 50%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 2px;
         }
 
-        .chapter-content {
+        .dream-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 8px 32px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dream-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .dream-text {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.6rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Promises Section - New Precise Design */
+        .promises {
+            padding: 3rem 1rem;
+            position: relative;
+        }
+
+        .promises-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .promises-circle {
+            position: relative;
+            max-width: 800px;
+            height: 600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promise-ring {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .promise-card {
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .promise-card:hover {
+            transform: scale(1.1) translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+        }
+
+        .promise-card:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .promise-card:nth-child(2) {
+            top: 25%;
+            right: 0;
+        }
+
+        .promise-card:nth-child(3) {
+            bottom: 25%;
+            right: 0;
+        }
+
+        .promise-card:nth-child(4) {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .promise-card:nth-child(5) {
+            bottom: 25%;
+            left: 0;
+        }
+
+        .promise-card:nth-child(6) {
+            top: 25%;
+            left: 0;
+        }
+
+        .promise-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .promise-title {
             font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: justify;
-            flex: 1;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .promise-text {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            color: var(--secondary);
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .promise-card:hover .promise-text {
+            opacity: 1;
+            max-height: 100px;
+            margin-top: 0.5rem;
+        }
+
+        .promise-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 20;
+            animation: pulse 2s ease-in-out infinite;
+            line-height: 1.2;
+        }
+
+        /* Love Letter Section - Enhanced with Glass Effect */
+        .love-letter {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 830px;
+            margin: 3rem auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
             position: relative;
-            font-weight: 400;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .chapter-content p {
-            margin-bottom: 20px;
-            text-indent: 30px;
-        }
-
-        .chapter-illustration {
-            width: 220px;
-            height: 220px;
-            background: url('https://images.unsplash.com/photo-1511306396867-5943b19a0fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80') center/cover;
-            border: 8px solid var(--dark-parchment);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            margin: 20px auto;
-            position: relative;
-        }
-
-        .chapter-illustration::before {
+        .love-letter::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(114, 47, 55, 0.2) 0%, transparent 50%);
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            pointer-events: none;
         }
 
-        /* Victorian Decorations */
-        .victorian-decoration {
-            display: block;
+        .letter-header {
             text-align: center;
-            margin: 20px 0;
-            font-size: 1.5rem;
-            color: var(--gold);
-        }
-
-        .flourish {
-            font-size: 2rem;
-            color: var(--gold);
-            margin: 15px 0;
-            display: block;
-            text-align: center;
-        }
-
-        /* Letter Styles */
-        .letter-content {
-            background: var(--dark-parchment);
-            border-radius: 5px;
-            padding: 30px;
-            margin: 20px 0;
-            border: 1px solid var(--rose);
+            margin-bottom: 2rem;
             position: relative;
+            z-index: 2;
+        }
+
+        .letter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
             font-style: italic;
-            flex: 1;
-            line-height: 1.8;
+            color: var(--primary);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        .letter-content::before {
-            content: '"';
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 4rem;
-            color: rgba(114, 47, 55, 0.2);
+        .letter-date {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            margin-top: 0.5rem;
             font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
 
-        .letter-content::after {
-            content: '"';
-            position: absolute;
-            bottom: 0;
-            right: 20px;
-            font-size: 4rem;
-            color: rgba(114, 47, 55, 0.2);
+        .letter-content {
             font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            line-height: 1.9;
+            text-align: justify;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .letter-content::first-letter {
+            font-size: 3rem;
+            font-weight: 700;
+            float: left;
+            line-height: 1;
+            margin-right: 0.5rem;
+            color: var(--primary);
         }
 
         .letter-signature {
             text-align: right;
-            margin-top: 20px;
+            font-family: 'Sacramento', cursive;
+            font-size: 2.8rem;
+            color: var(--primary);
+            position: relative;
+            z-index: 2;
+            animation: signature-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes signature-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Birthday Message */
+        .birthday-message {
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+        }
+
+        .message-container {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 30px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .message-title {
             font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-text {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.9rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .message-signature {
+            font-family: 'Tangerine', cursive;
+            font-size: 3rem;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            animation: signature-pulse 3s ease-in-out infinite;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            margin-top: 3rem;
+        }
+
+        .footer-text {
+            font-family: 'Alex Brush', cursive;
             font-size: 1.8rem;
-            color: var(--burgundy);
+            color: var(--dark);
         }
 
-        /* Navigation Buttons */
-        .nav-buttons {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 100;
+        .heart-icon {
+            color: var(--primary);
+            animation: heartbeat 1.5s infinite;
         }
 
-        .nav-btn {
-            background: var(--burgundy);
-            color: var(--parchment);
-            border: none;
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Additional Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-10deg) scale(0.9);
+            transition: all 0.8s ease;
+        }
+
+        .rotate-in.visible {
+            opacity: 1;
+            transform: rotate(0) scale(1);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+            background: rgba(255, 107, 157, 0.5);
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 107, 157, 0.1);
+            pointer-events: none;
+            z-index: 9998;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            font-size: 1.2rem;
+            transform: translate(-50%, -50%);
         }
 
-        .nav-btn:hover {
-            background: var(--gold);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-        }
-
-        .nav-btn:disabled {
-            background: var(--rose);
-            cursor: not-allowed;
-            opacity: 0.5;
-        }
-
-        /* Victorian Frame */
-        .victorian-frame {
-            position: absolute;
+        /* Loading Screen */
+        .loader {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: 20px solid transparent;
-            border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="%23d4af37" stroke-width="2"/><path d="M10,10 Q20,0 30,10 T50,10 Q60,0 70,10 T90,10" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M10,90 Q20,100 30,90 T50,90 Q60,100 70,90 T90,90" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M10,10 Q0,20 10,30 T10,50 Q0,60 10,70 T10,90" fill="none" stroke="%23d4af37" stroke-width="1"/><path d="M90,10 Q100,20 90,30 T90,50 Q100,60 90,70 T90,90" fill="none" stroke="%23d4af37" stroke-width="1"/></svg>') 30 stretch;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-heart {
+            font-size: 5rem;
+            color: var(--primary);
+            animation: pulse 1.5s infinite;
+        }
+
+        .loader-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-top: 1rem;
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            position: absolute;
+            animation: confetti-fall 5s linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Fireworks Effect */
+        .firework {
+            position: fixed;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 5px rgba(255, 107, 157, 0.7);
+            animation: firework-explode 1.5s ease-out forwards;
+        }
+
+        @keyframes firework-explode {
+            0% {
+                transform: translate(0, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y));
+                opacity: 0;
+            }
+        }
+
+        /* Interactive Elements */
+        .interactive-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: left 0.5s ease;
+        }
+
+        .interactive-btn:hover::before {
+            left: 100%;
+        }
+
+        .interactive-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Interactive Timeline */
+        .interactive-timeline {
+            position: relative;
+            padding: 2rem 0;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 400px;
+        }
+
+        .timeline-bar {
+            height: 8px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 4px;
+            position: relative;
+            margin: 3rem 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-marker:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .timeline-marker.active {
+            background: var(--primary);
+            border-color: var(--secondary);
+        }
+
+        .timeline-event {
+            position: absolute;
+            width: 250px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
             pointer-events: none;
-            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-event.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .timeline-event-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .timeline-event-date {
+            font-size: 0.9rem;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event-desc {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.3rem;
+            line-height: 1.6;
+        }
+
+        /* Starry Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating Message */
+        .floating-message {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 15px 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: 1000;
+        }
+
+        .floating-message.show {
+            opacity: 1;
+            bottom: 120px;
+        }
+
+        .message-text-small {
+            font-family: 'Alex Brush', cursive;
+            font-size: 1.6rem;
+            color: var(--dark);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .glass-container,
+            .dream-card,
+            .promise-card,
+            .message-container,
+            .love-letter {
+                background: white;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+
+            .cursor,
+            .cursor-follower,
+            .loader,
+            .floating-message {
+                display: none;
+            }
         }
 
         /* Responsive Design */
         @media (max-width: 1200px) {
-            .book-container {
-                width: 95vw;
-                height: 90vh;
+            .promises-circle {
+                height: 500px;
             }
             
-            .cover-title {
-                font-size: 3.5rem;
+            .promise-ring {
+                width: 400px;
+                height: 400px;
             }
             
-            .cover-subtitle {
+            .promise-card {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .promise-center {
+                width: 160px;
+                height: 160px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .promises-circle {
+                height: 450px;
+            }
+            
+            .promise-ring {
+                width: 350px;
+                height: 350px;
+            }
+            
+            .promise-card {
+                width: 130px;
+                height: 130px;
+                padding: 1rem;
+            }
+            
+            .promise-icon {
                 font-size: 2rem;
             }
             
-            .cover-image {
-                width: 200px;
-                height: 200px;
+            .promise-text {
+                font-size: 1rem;
             }
         }
 
         @media (max-width: 768px) {
-            .book-container {
-                width: 100vw;
-                height: 100vh;
-                max-height: none;
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+                transform: none !important;
+            }
+
+            .timeline-icon {
+                left: -70px !important;
+                right: auto !important;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-item {
+                min-width: 80px;
+                padding: 1rem;
+            }
+
+            .countdown-value {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 3rem;
+            }
+
+            .subtitle {
+                font-size: 2rem;
+            }
+
+            .dreams-title, .promises-title {
+                font-size: 2.8rem;
+            }
+
+            .message-title {
+                font-size: 2.8rem;
+            }
+
+            .message-text {
+                font-size: 1.6rem;
             }
             
-            .book-binding {
-                width: 60px;
+            .promises-circle {
+                height: 400px;
+                transform: scale(0.8);
             }
             
-            .binding-title {
-                font-size: 1.2rem;
+            .timeline-event {
+                width: 200px;
             }
             
-            .page {
-                width: calc(50% - 30px);
-                padding: 30px 20px 30px 40px;
+            .interactive-timeline {
+                min-height: 350px;
             }
             
-            .cover-title {
+            .petal-text {
                 font-size: 2.5rem;
-            }
-            
-            .cover-subtitle {
-                font-size: 1.5rem;
-            }
-            
-            .cover-image {
-                width: 150px;
-                height: 150px;
-            }
-            
-            .chapter-illustration {
-                width: 150px;
-                height: 150px;
             }
         }
 
-        @media (max-width: 480px) {
-            .book-binding {
-                width: 40px;
+        @media (max-width: 576px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.8rem;
+            }
+
+            .dreams-title, .promises-title {
+                font-size: 2.3rem;
+            }
+
+            .message-title {
+                font-size: 2.3rem;
+            }
+
+            .message-text {
+                font-size: 1.4rem;
             }
             
-            .binding-title {
-                writing-mode: vertical-rl;
+            .promises-circle {
+                transform: scale(0.6);
+                height: 350px;
+            }
+            
+            .timeline-event {
+                width: 180px;
                 font-size: 0.9rem;
             }
             
-            .page {
-                padding: 20px 15px 20px 30px;
+            .dream-text, .letter-content {
+                font-size: 1.5rem;
             }
             
-            .cover-title {
+            .interactive-timeline {
+                min-height: 300px;
+            }
+            
+            .petal-text {
                 font-size: 2rem;
             }
             
-            .cover-subtitle {
+            .letter-content {
                 font-size: 1.2rem;
             }
             
-            .cover-image {
-                width: 120px;
-                height: 120px;
+            .letter-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .promises-circle {
+                transform: scale(0.5);
+                height: 300px;
             }
             
-            .chapter-illustration {
+            .promise-card {
+                width: 110px;
+                height: 110px;
+            }
+            
+            .promise-center {
                 width: 120px;
                 height: 120px;
+                font-size: 1.2rem;
+            }
+            
+            .timeline-event {
+                width: 160px;
+            }
+            
+            .interactive-timeline {
+                min-height: 280px;
+            }
+            
+            .petal-text {
+                font-size: 1.8rem;
+            }
+            
+            .love-letter {
+                padding: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="book-container">
-        <!-- Book Cover -->
-        <div class="book-cover">
-            <div class="cover-design">
-                <h1 class="cover-title">REHAB</h1>
-                <div class="cover-ornament">✧</div>
-                <h2 class="cover-subtitle">A Victorian Love Story</h2>
-                <div class="cover-image"></div>
-                <div class="cover-date">First Meeting: May 4, 2025</div>
-            </div>
-        </div>
-
-        <!-- Book Binding -->
-        <div class="book-binding">
-            <div class="binding-decoration">
-                <i class="fas fa-heart"></i>
-            </div>
-            <div class="binding-title">REHAB</div>
-            <div class="binding-decoration">
-                <i class="fas fa-crown"></i>
-            </div>
-        </div>
-
-        <!-- Book Pages -->
-        <div class="book-pages">
-            <!-- Page 1: Cover -->
-            <div class="page left" id="page1">
-                <div class="victorian-border"></div>
-                <div class="victorian-corner top-left"></div>
-                <div class="victorian-corner top-right"></div>
-                <div class="victorian-corner bottom-left"></div>
-                <div class="victorian-corner bottom-right"></div>
-                
-                <div class="page-content">
-                    <div class="page-header">
-                        <h1 class="cover-title">REHAB</h1>
-                        <span class="flourish">❦</span>
-                        <h2 class="cover-subtitle">A Victorian Love Story</h2>
-                    </div>
-                    
-                    <div class="cover-illustration">
-                        <div class="victorian-illustration"></div>
-                    </div>
-                    
-                    <div class="cover-date">
-                        First Meeting: May 4, 2025
-                    </div>
-                    
-                    <div class="page-number left">1</div>
-                </div>
-            </div>
-
-            <!-- Page 2: Table of Contents -->
-            <div class="page right" id="page2">
-                <div class="victorian-border"></div>
-                <div class="victorian-corner top-left"></div>
-                <div class="victorian-corner top-right"></div>
-                <div class="victorian-corner bottom-left"></div>
-                <div class="victorian-corner bottom-right"></div>
-                
-                <div class="page-content">
-                    <div class="page-header">
-                        <h2 class="toc-title">Table of Contents</h2>
-                    </div>
-                    
-                    <ul class="toc-list">
-                        <li class="toc-item">
-                            <a href="#chapter1">Chapter I: The First Encounter</a>
-                            <span class="toc-page">3</span>
-                        </li>
-                        <li class="toc-item">
-                            <a href="#chapter2">Chapter II: Growing Affection</a>
-                            <span class="toc-page">4</span>
-                        </li>
-                        <li class="toc-item">
-                            <a href="#chapter3">Chapter III: A Promise</a>
-                            <span class="toc-page">5</span>
-                        </li>
-                    </ul>
-                    
-                    <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
-                    
-                    <div class="page-number">2</div>
-                </div>
-            </div>
-
-            <!-- Page 3: Chapter 1 -->
-            <div class="page left" id="page3">
-                <div class="victorian-border"></div>
-                <div class="victorian-corner top-left"></div>
-                <div class="victorian-corner top-right"></div>
-                <div class="victorian-corner bottom-left"></div>
-                <div class="victorian-corner bottom-right"></div>
-                
-                <div class="page-content">
-                    <div class="chapter-header">
-                        <div class="chapter-number">Chapter I</div>
-                        <h2 class="chapter-title">The First Encounter</h2>
-                    </div>
-                    
-                    <div class="chapter-content">
-                        <p>In the spring of 2025, amidst the blooming gardens of May, fate brought two souls together in a moment that would forever change the course of their lives. The air was filled with the sweet fragrance of roses, and the sun cast a golden glow upon the world, as if nature itself was celebrating this destined meeting.</p>
-                        
-                        <p>She appeared like a vision from a dream, her grace and elegance captivating all who beheld her. Her eyes, deep and mysterious, held the wisdom of ages and the innocence of a child. Her smile, warm and genuine, could melt the coldest of hearts and brighten the darkest of days.</p>
-                        
-                        <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1511306396867-5943b19a0fd2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
-                        
-                        <p>In that moment, time stood still, and the world faded away, leaving only two hearts beating as one. It was the beginning of a love story that would transcend time itself.</p>
-                    </div>
-                    
-                    <div class="page-number left">3</div>
-                </div>
-            </div>
-
-            <!-- Page 4: Chapter 2 -->
-            <div class="page right" id="page4">
-                <div class="victorian-border"></div>
-                <div class="victorian-corner top-left"></div>
-                <div class="victorian-corner top-right"></div>
-                <div class="victorian-corner bottom-left"></div>
-                <div class="victorian-corner bottom-right"></div>
-                
-                <div class="page-content">
-                    <div class="chapter-header">
-                        <div class="chapter-number">Chapter II</div>
-                        <h2 class="chapter-title">Growing Affection</h2>
-                    </div>
-                    
-                    <div class="chapter-content">
-                        <p>As days turned into weeks and weeks into months, their bond grew stronger with each passing moment. They discovered in each other a kindred spirit, someone who understood their deepest thoughts and cherished their highest aspirations.</p>
-                        
-                        <p>Her kindness knew no bounds, her compassion touched the lives of all around her, and her gentle spirit brought peace to troubled hearts. She was a beacon of light in a world often shrouded in darkness, a reminder of the beauty that exists in humanity.</p>
-                        
-                        <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
-                        
-                        <p>Together they walked through gardens of blooming flowers, sat by the gentle streams, and shared dreams under the starlit sky. Each moment spent together was a treasure, a memory to be cherished for eternity.</p>
-                    </div>
-                    
-                    <div class="page-number">4</div>
-                </div>
-            </div>
-
-            <!-- Page 5: Chapter 3 & Letter -->
-            <div class="page left" id="page5">
-                <div class="victorian-border"></div>
-                <div class="victorian-corner top-left"></div>
-                <div class="victorian-corner top-right"></div>
-                <div class="victorian-corner bottom-left"></div>
-                <div class="victorian-corner bottom-right"></div>
-                
-                <div class="page-content">
-                    <div class="chapter-header">
-                        <div class="chapter-number">Chapter III</div>
-                        <h2 class="chapter-title">A Promise</h2>
-                    </div>
-                    
-                    <div class="chapter-content">
-                        <p>And so, with hearts full of love and minds filled with dreams of the future, a promise was made—a promise to wait, to grow, and to build a life together founded on love, respect, and unwavering devotion.</p>
-                        
-                        <div class="letter-content">
-                            My dearest Rehab,<br><br>
-                            These few pages tell only the beginning of what I hope will be a long story. I will not say much now, for it is better that the days themselves write what is yet to come. I will ask for your hand after 40 months — because I want us to grow together and become stronger than when we began.<br><br>
-                            Until then, keep these pages as a keepsake of something beautiful that has just begun.
-                            <div class="letter-signature">With all my love, Islam</div>
-                        </div>
-                        
-                        <div class="chapter-illustration" style="background-image: url('https://images.unsplash.com/photo-1469371670807-013ccf25f16a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80');"></div>
-                    </div>
-                    
-                    <div class="page-number left">5</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <button class="nav-btn" id="prevBtn" disabled>
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button class="nav-btn" id="nextBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-heart"><i class="fas fa-heart"></i></div>
+            <div class="loader-text">Preparing something special for Rehab...</div>
         </div>
     </div>
 
+    <!-- Custom Cursor -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Background Animation -->
+    <div class="bg-animation" id="bg-animation"></div>
+
+    <!-- Starry Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo fade-in">For My Beautiful Rehab</div>
+        <div class="subtitle fade-in">A Special Birthday Gift Just For You</div>
+        
+        <!-- Countdown Timer -->
+        <div class="countdown-container fade-in" id="countdown-container">
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            
+            <div class="rose-petals-container" id="rose-petals-container">
+                <div class="petal-text">كل عام وانتي معي<br>رحابيا</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Our Story Section -->
+        <section class="glass-container fade-in">
+            <h2 class="dreams-title">Our Beautiful Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="timeline-date">September 23, 2009</div>
+                    <div class="timeline-title">The Day You Were Born</div>
+                    <div class="timeline-content">
+                      
+Since then, every smile of yours has been a reason for joy, and every moment with you makes life feel whole.
+You’re not just in my story — you are the story </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon"><i class="fas fa-heart"></i></div>
+                    <div class="timeline-date">May 4, 2025</div>
+                    <div class="timeline-title">Our First Meeting</div>
+                    <div class="timeline-content">
+                       From the first time I saw you, something inside me felt calm and certain.
+It wasn’t about time stopping or anything dramatic — it was just clear to me that you were someone my heart had been waiting for</div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon"><i class="fas fa-comments"></i></div>
+                    <div class="timeline-date">May 2025</div>
+                    <div class="timeline-title">Our Conversations Begin</div>
+                    <div class="timeline-content">
+                      The things you say stay with me, like little pieces of you I keep close.
+Your laughter makes the world feel softer, and every day I feel more grateful to have you in my life. </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-icon"><i class="fas fa-ring"></i></div>
+                    <div class="timeline-date">January 2029</div>
+                    <div class="timeline-title">Our Forever Promise</div>
+                    <div class="timeline-content">
+                       In forty moons, I’ll be by your side, ready to begin a new chapter with you.
+What I offer isn’t only a ring, but a promise — to walk with you through every joy and every storm, for all the days to come
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Her Dreams Section -->
+        <section class="dreams glass-container fade-in">
+            <h2 class="dreams-title">Your Beautiful Dreams</h2>
+            <div class="dream-card">
+                <div class="dream-icon"><i class="fas fa-user-md"></i></div>
+                <p class="dream-text">
+                  Rehab, your dream of becoming a doctor is more than just a goal — it’s a reflection of the care and strength that are already within you.
+And as you move forward on this path, know that I’ll always be beside you, believing in you and cheering you on
+                </p>
+            </div>
+        </section>
+
+        <!-- Promises Section - New Precise Circle Design -->
+        <section class="promises glass-container fade-in">
+            <h2 class="promises-title">My Promises To You</h2>
+            <div class="promises-circle">
+                <div class="promise-ring">
+                    <div class="promise-card">
+                        <div class="promise-icon"><i class="fas fa-heart"></i></div>
+                        <h3 class="promise-title">Eternal Love</h3>
+                        <p class="promise-text">I promise to love you with a love that grows stronger with each breath, deeper with each heartbeat, and more passionate with each passing moment of our lives together.</p>
+                    </div>
+                    
+                    <div class="promise-card">
+                        <div class="promise-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 class="promise-title">Sacred Protection</h3>
+                        <p class="promise-text">I promise to be your guardian angel, your safe harbor in life's storms, and your unwavering shield against all that may seek to harm your beautiful spirit.</p>
+                    </div>
+                    
+                    <div class="promise-card">
+                        <div class="promise-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                        <h3 class="promise-title">Divine Cherishment</h3>
+                        <p class="promise-text">I promise to cherish every moment with you as if it were our last, to treasure your laughter as the sweetest music, and to honor your love as the greatest gift of my life.</p>
+                    </div>
+                    
+                    <div class="promise-card">
+                        <div class="promise-icon"><i class="fas fa-seedling"></i></div>
+                        <h3 class="promise-title">Boundless Growth</h3>
+                        <p class="promise-text">I promise to grow with you like two trees intertwining their branches, reaching together for the heavens while our roots grow ever deeper in the soil of our shared love.</p>
+                    </div>
+                    
+                    <div class="promise-card">
+                        <div class="promise-icon"><i class="fas fa-laugh"></i></div>
+                        <h3 class="promise-title">Infinite Joy</h3>
+                        <p class="promise-text">I promise to fill your days with laughter that echoes through eternity, to be the reason behind your brightest smiles, and to create a life where joy is our constant companion.</p>
+                    </div>
+                    
+                    <div class="promise-card">
+                        <div class="promise-icon"><i class="fas fa-infinity"></i></div>
+                        <h3 class="promise-title">Timeless Devotion</h3>
+                        <p class="promise-text">I promise to love you beyond the boundaries of time, beyond the limits of this world, and beyond even death itself, for our souls are eternally bound by a love that transcends all dimensions.</p>
+                    </div>
+                </div>
+                
+                <div class="promise-center">
+                    My Heart<br>is Yours<br>Forever
+                </div>
+            </div>
+        </section>
+
+        <!-- Love Letter Section - Enhanced with Glass Effect -->
+        <section class="love-letter fade-in">
+            <div class="letter-header">
+                <h2 class="letter-title">A Letter To My Eternal Love</h2>
+                <p class="letter-date">Written with the ink of my soul</p>
+            </div>
+            <div class="letter-content">
+    My Dearest Rehab,
+    
+    Words often fall short when I try to describe what you mean to me.  
+    You are not just the love of my life, but the heartbeat that keeps me alive,  
+    the breath that carries me forward, the reason my world feels complete.  
+    From the moment our souls crossed, I knew I had found not just love,  
+    but destiny itself made real.
+    
+    Your beauty is not only in the way you look, but in the light that shines from your soul.  
+    In your eyes, I see endless kindness; in your smile, a warmth brighter than the sun;  
+    in your touch, a healing that soothes even the deepest wounds.  
+    You are poetry in motion, a masterpiece that leaves me grateful every single day.
+    
+    As you walk the noble path of medicine, bringing healing and hope to others,  
+    remember that you are also my healer, my guiding light, my strength.  
+    The compassion you give to the world mirrors the love you have given me,  
+    and the dedication you carry in your calling reflects the devotion in your heart.  
+    I will always be beside you—not just as your partner,  
+    but as your greatest admirer, your strongest supporter, your truest companion.
+    
+    In forty months, I will stand before you with more than just a ring;  
+    I will give you all that I am, and all that I will ever be.  
+    For you are not just my present, or my future—you are my forever.  
+    My heart has been yours from the very start, and it will remain yours  
+    until the stars themselves fade from the sky.
+    
+    Happy Birthday, my love, my life, my everything.  
+    May this day be filled with the beauty, joy, and love you bring to everyone around you.  
+</div>
+<div class="letter-signature">Eternally Yours</div>
+
+        </section>
+
+        <!-- Interactive Timeline -->
+        <section class="glass-container fade-in">
+            <h2 class="dreams-title">Our Future Together</h2>
+            <div class="interactive-timeline">
+                <div class="timeline-bar">
+                    <div class="timeline-marker active" style="left: 0%;" data-year="2025"></div>
+                    <div class="timeline-marker" style="left: 20%;" data-year="2026"></div>
+                    <div class="timeline-marker" style="left: 40%;" data-year="2027"></div>
+                    <div class="timeline-marker" style="left: 60%;" data-year="2028"></div>
+                    <div class="timeline-marker" style="left: 80%;" data-year="2029"></div>
+                    <div class="timeline-marker" style="left: 100%;" data-year="2030"></div>
+                </div>
+                
+                <div class="timeline-event active" style="left: 0%; top: -120px;">
+                    <div class="timeline-event-title">Our Beginning</div>
+                    <div class="timeline-event-date">2025</div>
+                    <div class="timeline-event-desc">What we share didn’t start with a moment, but with a feeling a quiet certainty that life finally made sense when you appeared.</div>
+                </div>
+                
+                <div class="timeline-event" style="left: 20%; top: 60px;">
+                    <div class="timeline-event-title">Deepening Bond</div>
+                    <div class="timeline-event-date">2026</div>
+                    <div class="timeline-event-desc">Our love grows with every laugh we share, every hope we dream together, and every quiet moment when your presence feels like home.</div>
+                </div>
+                
+                <div class="timeline-event" style="left: 40%; top: -120px;">
+                    <div class="timeline-event-title">Building Dreams</div>
+                    <div class="timeline-event-date">2027</div>
+                    <div class="timeline-event-desc">Together, hand in hand, we walk forward embracing your dream in medicine as part of the life we are building side by side</div>
+                </div>
+                
+                <div class="timeline-event" style="left: 60%; top: 60px;">
+                    <div class="timeline-event-title">The Sacred Proposal</div>
+                    <div class="timeline-event-date">2028</div>
+                    <div class="timeline-event-desc">
+When the moment comes, I will ask you to be mine forever not only with a ring, but with all of me, faithfully and for life.</div>
+                </div>
+                
+                <div class="timeline-event" style="left: 80%; top: -120px;">
+                    <div class="timeline-event-title">Our Divine Union</div>
+                    <div class="timeline-event-date">2029</div>
+                    <div class="timeline-event-desc">Together, we step into our new life — two hearts blending as one, ready to face the world hand in hand, bound by a love that will never fade</div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Birthday Message -->
+        <section class="birthday-message fade-in">
+            <div class="message-container">
+                <h2 class="message-title">Happy Birthday My Eternal Love!</h2>
+                <p class="message-text">
+                  My beloved Rehab, today we celebrate not just the day you were born,
+but the joy, love, and light you have brought into my life.
+You are the heartbeat that steadies me, the warmth that comforts me,
+and the reason every day feels brighter than the one before.
+May your birthday be filled with laughter, love, and all the little wonders you inspire.
+Every moment with you is a gift, and I cherish the thought of countless more ahead.</p>
+                <p class="message-signature">Forever and Always</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">
+            Created with <i class="fas fa-heart heart-icon"></i> for the most beautiful soul in existence
+        </p>
+    </footer>
+
+    <!-- Floating Message -->
+    <div class="floating-message" id="floating-message">
+        <p class="message-text-small">You are my eternity, my love</p>
+    </div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const pages = document.querySelectorAll('.page');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            let currentPage = 0;
-            const totalPages = pages.length;
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500);
+            }, 2000);
+        });
 
-            function updatePage() {
-                // Update navigation buttons
-                prevBtn.disabled = currentPage === 0;
-                nextBtn.disabled = currentPage === totalPages - 1;
+        // Custom Cursor
+        const cursor = document.getElementById('cursor');
+        const cursorFollower = document.getElementById('cursor-follower');
 
-                // Flip pages based on current page
-                pages.forEach((page, index) => {
-                    if (index < currentPage) {
-                        page.classList.add('flipped');
-                    } else {
-                        page.classList.remove('flipped');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+
+        // Background Animation - Floating Hearts
+        const bgAnimation = document.getElementById('bg-animation');
+        const heartSymbols = ['❤️', '💖', '💕', '💗', '💓'];
+
+        for (let i = 0; i < 15; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'floating-heart';
+            heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 15 + 's';
+            heart.style.animationDuration = (15 + Math.random() * 10) + 's';
+            bgAnimation.appendChild(heart);
+        }
+
+        // Starry Background
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 4 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Countdown Timer with Rose Petals Effect
+        function updateCountdown() {
+            const birthday = new Date('September 23, 2025 00:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = birthday - now;
+
+            if (distance > 0) {
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // Hide countdown and show rose petals
+                document.getElementById('countdown').style.display = 'none';
+                const roseContainer = document.getElementById('rose-petals-container');
+                roseContainer.classList.add('show');
+                
+                // Create flying rose petals that form the sentence
+                createFlyingRosePetals();
+                
+                // Trigger celebration
+                triggerCelebration();
+            }
+        }
+
+        function createFlyingRosePetals() {
+            const container = document.getElementById('rose-petals-container');
+            const text = "كل عام وانتي معي رحابيا";
+            const colors = ['#e91e63', '#f06292', '#ec407a', '#d81b60', '#c2185b'];
+            
+            // Calculate positions for each character
+            const centerX = container.offsetWidth / 2;
+            const centerY = container.offsetHeight / 2;
+            const radius = 150;
+            const angleStep = (Math.PI * 2) / text.length;
+            
+            // Create petals for each character
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === ' ') continue;
+                
+                setTimeout(() => {
+                    // Create multiple petals for each character
+                    for (let j = 0; j < 3; j++) {
+                        const petal = document.createElement('div');
+                        petal.className = 'rose-petal';
+                        petal.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        // Random starting position
+                        petal.style.left = Math.random() * container.offsetWidth + 'px';
+                        petal.style.top = '-50px';
+                        
+                        container.appendChild(petal);
+                        
+                        // Animate to final position
+                        setTimeout(() => {
+                            const angle = i * angleStep;
+                            const finalX = centerX + Math.cos(angle) * radius - 12.5;
+                            const finalY = centerY + Math.sin(angle) * radius - 12.5;
+                            
+                            petal.style.transition = 'all 2s ease-out';
+                            petal.style.left = finalX + 'px';
+                            petal.style.top = finalY + 'px';
+                            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+                        }, 100);
+                        
+                        // Remove after animation
+                        setTimeout(() => {
+                            petal.style.opacity = '0';
+                            setTimeout(() => petal.remove(), 500);
+                        }, 3000);
                     }
-                });
+                }, i * 200);
+            }
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Celebration Effects
+        function triggerCelebration() {
+            // Confetti
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 60%)`;
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 30);
             }
 
-            // Next page
-            nextBtn.addEventListener('click', () => {
-                if (currentPage < totalPages - 1) {
-                    currentPage++;
-                    updatePage();
-                }
-            });
-
-            // Previous page
-            prevBtn.addEventListener('click', () => {
-                if (currentPage > 0) {
-                    currentPage--;
-                    updatePage();
-                }
-            });
-
-            // Keyboard navigation
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowRight' && currentPage < totalPages - 1) {
-                    currentPage++;
-                    updatePage();
-                } else if (e.key === 'ArrowLeft' && currentPage > 0) {
-                    currentPage--;
-                    updatePage();
-                }
-            });
-
-            // Touch/Swipe navigation
-            let touchStartX = 0;
-            let touchEndX = 0;
-
-            document.addEventListener('touchstart', (e) => {
-                touchStartX = e.changedTouches[0].screenX;
-            });
-
-            document.addEventListener('touchend', (e) => {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-            });
-
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50 && currentPage < totalPages - 1) {
-                    currentPage++;
-                    updatePage();
-                }
-                if (touchEndX > touchStartX + 50 && currentPage > 0) {
-                    currentPage--;
-                    updatePage();
-                }
+            // Fireworks
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    createFirework();
+                }, i * 1000);
             }
 
-            // Initialize
-            updatePage();
+            // Show floating message
+            const floatingMessage = document.getElementById('floating-message');
+            floatingMessage.classList.add('show');
+            setTimeout(() => {
+                floatingMessage.classList.remove('show');
+            }, 5000);
+        }
+
+        function createFirework() {
+            const colors = ['#ff6b9d', '#c44569', '#f8b500', '#5f27cd', '#00d2d3'];
+            const x = Math.random() * window.innerWidth;
+            const y = Math.random() * window.innerHeight * 0.5;
+            
+            for (let i = 0; i < 30; i++) {
+                const firework = document.createElement('div');
+                firework.className = 'firework';
+                firework.style.left = x + 'px';
+                firework.style.top = y + 'px';
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                const angle = (Math.PI * 2 * i) / 30;
+                const velocity = 50 + Math.random() * 50;
+                firework.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
+                firework.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
+                
+                document.body.appendChild(firework);
+                setTimeout(() => firework.remove(), 1500);
+            }
+        }
+
+        // Intersection Observer for Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .scale-in, .rotate-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Interactive Timeline
+        const timelineMarkers = document.querySelectorAll('.timeline-marker');
+        const timelineEvents = document.querySelectorAll('.timeline-event');
+
+        timelineMarkers.forEach((marker, index) => {
+            marker.addEventListener('click', () => {
+                timelineMarkers.forEach(m => m.classList.remove('active'));
+                timelineEvents.forEach(e => e.classList.remove('active'));
+                
+                marker.classList.add('active');
+                timelineEvents[index].classList.add('active');
+            });
+        });
+
+        // Floating Message Timer
+        setTimeout(() => {
+            const floatingMessage = document.getElementById('floating-message');
+            floatingMessage.classList.add('show');
+            setTimeout(() => {
+                floatingMessage.classList.remove('show');
+            }, 5000);
+        }, 10000);
+
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.bg-animation');
+            parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+        });
+
+        // Interactive Button Effect
+        document.querySelectorAll('.interactive-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Add ripple effect styles
+        const style = document.createElement('style');
+        style.textContent = `
+            .interactive-btn {
+                position: relative;
+                overflow: hidden;
+            }
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.6);
+                transform: scale(0);
+                animation: ripple-animation 0.6s linear;
+            }
+            @keyframes ripple-animation {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Typing Effect for Love Letter
+        const letterContent = document.querySelector('.letter-content');
+        const originalText = letterContent.innerHTML;
+        letterContent.innerHTML = '';
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < originalText.length) {
+                letterContent.innerHTML += originalText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 20);
+            }
+        }
+
+        // Trigger typing effect when letter is in view
+        const letterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && charIndex === 0) {
+                    typeWriter();
+                }
+            });
+        }, { threshold: 0.5 });
+
+        letterObserver.observe(letterContent);
+
+        // Add some interactive sparkles on click
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.interactive-btn') || e.target.closest('.promise-card')) return;
+            
+            for (let i = 0; i < 5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.style.position = 'fixed';
+                sparkle.style.left = e.clientX + 'px';
+                sparkle.style.top = e.clientY + 'px';
+                sparkle.style.width = '10px';
+                sparkle.style.height = '10px';
+                sparkle.style.backgroundColor = '#f8b500';
+                sparkle.style.borderRadius = '50%';
+                sparkle.style.pointerEvents = 'none';
+                sparkle.style.zIndex = '9999';
+                sparkle.style.animation = 'sparkle 1s forwards';
+                
+                const angle = (Math.PI * 2 * i) / 5;
+                const velocity = 50;
+                sparkle.style.setProperty('--x', Math.cos(angle) * velocity + 'px');
+                sparkle.style.setProperty('--y', Math.sin(angle) * velocity + 'px');
+                
+                document.body.appendChild(sparkle);
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        });
+
+        // Add sparkle animation
+        const sparkleStyle = document.createElement('style');
+        sparkleStyle.textContent = `
+            @keyframes sparkle {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(var(--x), var(--y)) scale(0);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(sparkleStyle);
+
+        // Final touch - Add a subtle breathing animation to the main container
+        const mainContainers = document.querySelectorAll('.glass-container');
+        mainContainers.forEach(container => {
+            container.style.animation = 'breathing 4s ease-in-out infinite';
+        });
+
+        const breathingStyle = document.createElement('style');
+        breathingStyle.textContent = `
+            @keyframes breathing {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.005); }
+            }
+        `;
+        document.head.appendChild(breathingStyle);
+
+        // Interactive promise cards
+        const promiseCards = document.querySelectorAll('.promise-card');
+        promiseCards.forEach((card, index) => {
+            card.addEventListener('mouseenter', () => {
+                card.style.zIndex = '15';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.zIndex = '1';
+            });
         });
     </script>
 </body>
